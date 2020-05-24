@@ -3,6 +3,8 @@ import { hash } from 'bcryptjs'
 // eslint-disable-next-line no-unused-vars
 import User from '../models/User'
 
+import AppError from '../errors/appError'
+
 interface Request {
   name: string
   email: string
@@ -17,7 +19,7 @@ class CreateUserService {
     })
 
     if (checkUserExists) {
-      throw new Error('Email adress already used.')
+      throw new AppError('Email adress already used.')
     }
 
     const hashedPassword = await hash(password, 8)

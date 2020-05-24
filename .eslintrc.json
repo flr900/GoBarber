@@ -19,6 +19,6 @@
         "@typescript-eslint"
     ],
     "rules": {
-      "@typescript/camelcase": "off"
+      "@typescript-eslint/camelcase": "off"
     }
 }
