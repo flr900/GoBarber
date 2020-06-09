@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { Request, Response, NextFunction } from 'express'
 
 import { verify } from 'jsonwebtoken'

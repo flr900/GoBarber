@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('users')
