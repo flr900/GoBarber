@@ -2,10 +2,10 @@
 import { startOfHour } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 // eslint-disable-next-line no-unused-vars
-import Appointment from '../models/appointment'
+import Appointment from '../infra/typeorm/entities/appointment'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 
-import AppError from '../errors/appError'
+import AppError from '../../../shared/errors/appError'
 
 interface request{
   provider_id: string,

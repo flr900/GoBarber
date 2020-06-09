@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm'
 
-import User from './User'
+import User from '@modules/users/infra/typeorm/entities/User'
 
 @Entity('appointments')
 

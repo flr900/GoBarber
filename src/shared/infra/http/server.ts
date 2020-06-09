@@ -3,11 +3,11 @@ import 'reflect-metadata'
 // eslint-disable-next-line no-unused-vars
 import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
-import routes from './routes/index'
-import uploadConfig from './config/upload'
+import routes from './routes'
+import uploadConfig from '@config/upload'
 
-import './database'
-import AppError from './errors/appError'
+import '@shared/infra/typeorm'
+import AppError from '@shared/errors/appError'
 
 const app = express()
 
