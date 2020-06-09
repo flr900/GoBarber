@@ -3,7 +3,7 @@ import { startOfHour } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 // eslint-disable-next-line no-unused-vars
 import Appointment from '../infra/typeorm/entities/appointment'
-import AppointmentsRepository from '../repositories/AppointmentsRepository'
+import AppointmentsRepository from '../infra/typeorm/repositories/AppointmentsRepository'
 
 import AppError from '@shared/errors/appError'
 
