@@ -1,6 +1,6 @@
-/* eslint-disable camelcase */
 import { Router } from 'express'
 import multer from 'multer'
+import { container } from 'tsyringe'
 
 import uploadConfig from '@config/upload'
 import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAthenticated'
@@ -14,7 +14,7 @@ usersRouter.post('/', async (request, response) => {
   try {
     const { name, email, password } = request.body
 
-    const createUser = new CreateUserService()
+    const createUser = container.resolve(CreateUserService)
 
     const user = await createUser.execute({
       name,
@@ -34,7 +34,7 @@ usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async
   const avatarFileName = request.file.filename
   const user_id = request.User.id
 
-  const updateUserAvatar = new UpdateUserAvartarService()
+  const updateUserAvatar = container.resolve(UpdateUserAvartarService)
 
   const user = await updateUserAvatar.execute({
     user_id,
