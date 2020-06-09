@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 // eslint-disable-next-line no-unused-vars
-import User from '../models/User'
+import User from '@modules/users/infra/typeorm/entities/User'
 
-import AppError from '../errors/appError'
+import AppError from '@shared/errors/appError'
 
 interface Request {
   name: string

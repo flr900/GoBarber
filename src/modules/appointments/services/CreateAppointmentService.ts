@@ -5,7 +5,7 @@ import { getCustomRepository } from 'typeorm'
 import Appointment from '../infra/typeorm/entities/appointment'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 
-import AppError from '../../../shared/errors/appError'
+import AppError from '@shared/errors/appError'
 
 interface request{
   provider_id: string,

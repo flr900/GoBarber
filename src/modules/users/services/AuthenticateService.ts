@@ -3,8 +3,8 @@ import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 
 import User from '@modules/users/infra/typeorm/entities/User'
-import authConfig from '../../../config/auth'
-import AppError from '../../../shared/errors/appError'
+import authConfig from '@config/auth'
+import AppError from '@shared/errors/appError'
 
 interface Request{
   email:string,

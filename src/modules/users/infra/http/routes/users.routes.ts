@@ -3,7 +3,7 @@ import { Router } from 'express'
 import multer from 'multer'
 
 import uploadConfig from '@config/upload'
-import ensureAuthenticated from '@shared/infra/http/middleware/ensureAthenticated'
+import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAthenticated'
 import CreateUserService from '@modules/users/services/CreateUserService'
 import UpdateUserAvartarService from '@modules/users/services/UpdateUserAvaterService'
 
