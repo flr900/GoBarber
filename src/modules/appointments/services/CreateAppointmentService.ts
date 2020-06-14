@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+
 import { startOfHour } from 'date-fns'
 import Appointment from '../infra/typeorm/entities/appointment'
 
