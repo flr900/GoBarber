@@ -1,20 +1,20 @@
 import 'reflect-metadata'
+import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider'
 import CreateUserService from './CreateUserService'
+
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository'
-import path from 'path'
-import crypto from 'crypto'
-import multer from 'multer'
-import UploadConfig from '../../../config/upload'
-import fs, { PathLike } from 'fs'
-import User from '@modules/users/infra/typeorm/entities/User'
-import AppError from '@shared/errors/appError'
+import FakeStorageProvider from '@shared/container/providers/StorageProvider/fakes/FakeStorageProvider'
+
 import UpdateUserAvartarService from './UpdateUserAvaterService'
+import AppError from '@shared/errors/appError'
 
 describe('UpdateAvatar', () => {
-  it('Should update user avater', async () => {
+  it('Should update user avatar', async () => {
     const fakeUserRepository = new FakeUserRepository()
-    const updateUserAvartarService = new UpdateUserAvartarService(fakeUserRepository)
-    const createUserService = new CreateUserService(fakeUserRepository)
+    const fakeHashProvider = new FakeHashProvider()
+    const fakeStorageProvider = new FakeStorageProvider()
+    const createUserService = new CreateUserService(fakeUserRepository, fakeHashProvider)
+    const updateUserAvartarService = new UpdateUserAvartarService(fakeUserRepository, fakeStorageProvider)
 
     const userData = {
       name: 'Felipe',
@@ -24,27 +24,44 @@ describe('UpdateAvatar', () => {
 
     const user = await createUserService.execute(userData)
 
-    if (!user) {
-      return 'err'
+    if (!user) { return }
+    const responseAvatar = await updateUserAvartarService.execute({ user_id: user.id, avatarFileName: 'AvatarTopzera' })
+
+    expect(responseAvatar.avatar).toBe('AvatarTopzera')
+  })
+  it('Should not update user avatar without a valid user', async () => {
+    const fakeUserRepository = new FakeUserRepository()
+    const fakeStorageProvider = new FakeStorageProvider()
+    const updateUserAvartarService = new UpdateUserAvartarService(fakeUserRepository, fakeStorageProvider)
+
+    const responseAvatar = await
+
+    expect(updateUserAvartarService.execute({ user_id: 'catioro', avatarFileName: 'AvatarTopzera' }))
+      .rejects.toBeInstanceOf(AppError)
+  })
+  it('Should delte previous user avatar', async () => {
+    const fakeUserRepository = new FakeUserRepository()
+    const fakeHashProvider = new FakeHashProvider()
+    const fakeStorageProvider = new FakeStorageProvider()
+
+    const deleteFile = jest.spyOn(fakeStorageProvider, 'deleteFile')
+
+    const createUserService = new CreateUserService(fakeUserRepository, fakeHashProvider)
+    const updateUserAvartarService = new UpdateUserAvartarService(fakeUserRepository, fakeStorageProvider)
+
+    const userData = {
+      name: 'Felipe',
+      password: '1234567',
+      email: 'felipe@'
     }
 
-    const tmpFolder:PathLike = path.resolve(__dirname, '..', '..', '..', '..', 'tmp')
-    const fileHash = crypto.randomBytes(10).toString('HEX')
-    const filename = `${fileHash}-${'imgtest.jpeg'}`
+    const user = await createUserService.execute(userData)
 
-    const originalFolder: PathLike = path.resolve(__dirname, '..', '..', '..', '..', 'utils')
-    const defaultImg:PathLike = path.format({
-      root: '/ignored',
-      dir: ' /home/felipe/Projects/GoBarber/backend/utils',
-      base: 'imgtest.jpeg'
-    })
-    await fs.promises.copyFile(`${originalFolder}/imgtest.jpeg`, tmpFolder)
+    if (!user) { return }
+    await updateUserAvartarService.execute({ user_id: user.id, avatarFileName: 'AvatarTopzera' })
+    const responseAvatar = await updateUserAvartarService.execute({ user_id: user.id, avatarFileName: 'AvatarTopzera2' })
 
-    const updatedAvatar = await updateUserAvartarService.execute({
-      user_id: user.id,
-      avatarFileName: filename
-    })
-
-    expect(updatedAvatar.avatar).toBe(filename)
+    expect(deleteFile).toHaveBeenCalledWith('AvatarTopzera')
+    expect(responseAvatar.avatar).toBe('AvatarTopzera2')
   })
 })

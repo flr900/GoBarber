@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.31% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/26</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.62% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/21</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,14 +102,12 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,31 +116,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,6 +156,7 @@ import AppError from '@shared/errors/appError'
 import uploadConfig from '@config/upload'
 import fs from 'fs'
 import IUsersRepository from '../repositories/IUsersRepository'
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider'
 &nbsp;
 interface IRequest {
   user_id: string
@@ -166,28 +167,27 @@ interface IRequest {
 class UpdateUserAvartarService {
   constructor (
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository) {}
+    private usersRepository: IUsersRepository,
+    @inject('StorageProvider')
+    private storageProvider: IStorageProvider
+  ) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  public async e</span>xecute ({ <span class="cstat-no" title="statement not covered" >user_id,</span> <span class="cstat-no" title="statement not covered" >avatarFileName </span>}: IRequest): Promise&lt;User&gt; {
-    const <span class="cstat-no" title="statement not covered" >user = <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >await this.usersRepository.findById(user_id)</span></span></span>
+  public async execute ({ user_id, avatarFileName }: IRequest): Promise&lt;User&gt; {
+    const user = await this.usersRepository.findById(user_id)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!user) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError('Only authenticated users can change avatar!', 401)</span>
+    if (!user) {
+      throw new AppError('Only authenticated users can change avatar!', 401)
     }
 &nbsp;
-    if (<span class="cstat-no" title="statement not covered" >user.</span>avatar) {
-      const <span class="cstat-no" title="statement not covered" >userAvatarFilePath = path.join(uploadConfig.directory, user.avatar)</span>
-      const <span class="cstat-no" title="statement not covered" >userAvatarFileExists = <span class="cstat-no" title="statement not covered" >await fs.promises.stat(userAvatarFilePath)</span></span>
-&nbsp;
-      if (<span class="cstat-no" title="statement not covered" >userAvatarFileExists)</span> {
-<span class="cstat-no" title="statement not covered" >        await fs.promises.unlink(userAvatarFilePath)</span>
-      }
+    if (user.avatar) {
+      await this.storageProvider.deleteFile(user.avatar)
     }
-<span class="cstat-no" title="statement not covered" >    user.avatar = avatarFileName</span>
+    const filename = await this.storageProvider.saveFile(avatarFileName)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    await this.usersRepository.save(user)</span>
+    user.avatar = filename
+    await this.usersRepository.save(user)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return user</span>
+    return user
   }
 }
 &nbsp;
@@ -199,7 +199,7 @@ export default UpdateUserAvartarService
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Jun 12 2020 19:36:40 GMT-0300 (Horário Padrão de Brasília)
+                at Tue Jun 16 2020 03:52:09 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../../prettify.js"></script>
